@@ -16,7 +16,6 @@
     die();  
   }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -44,9 +43,7 @@
 
     <div class="col-md-8">
 
-
-
-    <legend>Bienvenido al listado de Clientes</legend>
+    <legend> <h2>Bienvenido al listado de Clientes</h2></legend>
 
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -77,6 +74,14 @@
               <td><?php echo $cliente['nombre']; ?></td>
               <td><?php echo $cliente['apellido']; ?></td>
               <td><?php echo $cliente['edad']; ?></td>
+
+              <?php if($cliente['activo'] == 0):?>
+                <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+              <?php else:?>
+                <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+              <?php endif;?>
+
+              <td><a href="#" class="btn btn-primary btn-sm">Editar</a><a href="#" class="btn btn-danger btn-sm">Borrar</a></td>
             </tr>
 
           <?php endforeach; ?>
@@ -85,6 +90,8 @@
 
       </tbody>
       </table>
+
+      <a href="#" class="btn btn-success btn-sm pull-right">Crear Nuevo</a>
 
       </div>
     </div>

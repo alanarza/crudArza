@@ -26,6 +26,9 @@ class Cliente {
 		}
 	}
 
-
+	function modificar_cliente()
+	{
+		
+	}
 
 }
