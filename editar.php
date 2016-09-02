@@ -1,13 +1,13 @@
 <?php 
 
-	include "db/cliente.class.php";
+	require_once "db/cliente.class.php";
 
 	try
 	{
 
 		$c = new Cliente();
 
-		$resultado = $c.buscar_cliente($POST['id']);
+		$resultado = $c->modificar_cliente($_GET['id']);
 
 	}
 	catch(Exception $e)
@@ -55,13 +55,21 @@
 				<fieldset>
 				    
 				    <div class="form-group">
-						
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 				    	<div class="col-lg-10">
-				        	<input type="text" class="form-control" id="nombre" placeholder="Nombre">
+				        	<input type="text" class="form-control" id="nombre" value="<?php echo $resultado['nombre']; ?>">
 				      	</div>
-
 				    </div>
+					
+					<div class="form-group">
+						<label for="nombre" class="col-lg-2 control-label">Apellido</label>
+				    	<div class="col-lg-10">
+				        	<input type="text" class="form-control" id="nombre" value="<?php echo $resultado['apellido']; ?>">
+				      	</div>
+				    </div>
+
+				    
+
 				</fieldset>
 			</form>
 		    
