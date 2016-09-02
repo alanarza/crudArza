@@ -4,11 +4,10 @@
 
   try
   {
+    
     $c = new Cliente();
 
     $resultado = $c->obtener_clientes();
-
-
 
   }catch(Exception $e)
   {
