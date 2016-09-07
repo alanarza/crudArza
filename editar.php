@@ -1,22 +1,4 @@
-<?php 
-
-	require_once "db/cliente.class.php";
-
-	try
-	{
-
-		$c = new Cliente();
-
-		$resultado = $c->modificar_cliente($_GET['id']);
-
-	}
-	catch(Exception $e)
-	{
-		header("Location: /error/Errores.php?msg".$e->getMessage());
-		die();  
-	}
-
-?>
+<?php include "controllers/cont_editar.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,27 +33,27 @@
 		  </div>
 		  <div class="panel-body">
 
-			<form class="form-horizontal">
+			<form class="form-horizontal" role="form" action="controllers/cont_editar.php" method="POST">
 				<fieldset>
 				    
 				    <div class="form-group">
 						<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 				    	<div class="col-lg-10">
-				        	<input type="text" class="form-control" id="nombre" value="<?php echo $resultado['nombre']; ?>">
+				        	<input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $resultado['nombre']; ?>">
 				      	</div>
 				    </div>
 					
 					<div class="form-group">
-						<label for="nombre" class="col-lg-2 control-label">Apellido</label>
+						<label for="apellido" class="col-lg-2 control-label">Apellido</label>
 				    	<div class="col-lg-10">
-				        	<input type="text" class="form-control" id="nombre" value="<?php echo $resultado['apellido']; ?>">
+				        	<input type="text" class="form-control" id="apellido" name="apellido" value="<?php echo $resultado['apellido']; ?>">
 				      	</div>
 				    </div>
 
 				    <div class="form-group">
 						<label for="fecha_nac" class="col-lg-2 control-label">Fecha de Nacimiento</label>
 				    	<div class="col-lg-10">
-				        	<input type="date" class="form-control" id="fecha_nac" value="<?php echo $resultado['fecha_nac']; ?>">
+				        	<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" value="<?php echo $resultado['fecha_nac']; ?>">
 				      	</div>
 				    </div>
 
@@ -80,16 +62,27 @@
 				      <div class="col-lg-10">
 				        <div class="radio">
 				          <label>
-				            <input type="radio" name="activo" id="optionsRadios1" value="1" checked="">
+				            <input type="radio" name="activo" id="optionsRadios1" value="1" <?php if($resultado['activo'] == 1){ echo 'checked=""'; }?> >
 				            Activo
 				          </label>
 				        </div>
 				        <div class="radio">
 				          <label>
-				            <input type="radio" name="activo" id="optionsRadios2" value="0">
+				            <input type="radio" name="activo" id="optionsRadios2" value="0" <?php if($resultado['activo'] == 0){ echo 'checked=""'; }?> >
 				            Inactivo
 				          </label>
 				        </div>
+				      </div>
+				    </div>
+
+				    <input id="action" type="hidden" name="action" value="datos"/>
+
+					<input id="action" type="hidden" name="id" value=" <?php echo $_GET['id']; ?> "/>
+
+				    <div class="form-group">
+				      <div class="col-lg-10 col-lg-offset-2">
+				        <button type="cancel" onclick="javascript:window.location='index.php';" class="btn btn-danger">Cancelar</button>
+				        <button type="submit" class="btn btn-success">Guardar</button>
 				      </div>
 				    </div>
 

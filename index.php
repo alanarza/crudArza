@@ -1,21 +1,4 @@
-<?php
-
-  include "db/cliente.class.php";
-
-  try
-  {
-    
-    $c = new Cliente();
-
-    $resultado = $c->obtener_clientes();
-
-  }catch(Exception $e)
-  {
-    header("Location: /error/Errores.php?msg".$e->getMessage());
-    die();  
-  }
-
-?>
+<?php include "controllers/cont_index.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
