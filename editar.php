@@ -68,7 +68,30 @@
 				      	</div>
 				    </div>
 
-				    
+				    <div class="form-group">
+						<label for="fecha_nac" class="col-lg-2 control-label">Fecha de Nacimiento</label>
+				    	<div class="col-lg-10">
+				        	<input type="date" class="form-control" id="fecha_nac" value="<?php echo $resultado['fecha_nac']; ?>">
+				      	</div>
+				    </div>
+
+				    <div class="form-group">
+				      <label class="col-lg-2 control-label">Activo</label>
+				      <div class="col-lg-10">
+				        <div class="radio">
+				          <label>
+				            <input type="radio" name="activo" id="optionsRadios1" value="1" checked="">
+				            Activo
+				          </label>
+				        </div>
+				        <div class="radio">
+				          <label>
+				            <input type="radio" name="activo" id="optionsRadios2" value="0">
+				            Inactivo
+				          </label>
+				        </div>
+				      </div>
+				    </div>
 
 				</fieldset>
 			</form>
