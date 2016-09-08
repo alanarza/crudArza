@@ -81,7 +81,7 @@
 
 				    <div class="form-group">
 				      <div class="col-lg-10 col-lg-offset-2">
-				        <button type="cancel" onclick="javascript:window.location='index.php';" class="btn btn-danger">Cancelar</button>
+				        <button type="cancel" class="btn btn-danger" href="index.php">Cancelar</button>
 				        <button type="submit" class="btn btn-success">Guardar</button>
 				      </div>
 				    </div>
