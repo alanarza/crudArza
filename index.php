@@ -123,7 +123,7 @@
               <td><?php echo $cliente['id']; ?></td>
               <td><?php echo $cliente['nombre']; ?></td>
               <td><?php echo $cliente['apellido']; ?></td>
-              <td><?php echo $cliente['fecha_nac']; ?></td>
+              <td><?php echo $cliente['edad']; ?></td>
 
               <?php if($cliente['activo'] == 0):?>
                 <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>

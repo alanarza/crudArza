@@ -17,6 +17,13 @@ class Cliente {
 			if($stmt->rowCount() > 0)
 			{
 				$clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+				foreach ($clientes as &$cliente) 
+				{
+					list($Y,$m,$d) = explode("-", $cliente['fecha_nac']);
+    				$cliente['edad'] = ( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
+				}
+
 				return $clientes;
 			}
 			
