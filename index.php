@@ -37,21 +37,21 @@
                   <div class="form-group">
                   <label for="nombre" class="col-lg-2 control-label">Nombre</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="nombre" name="nombre">
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
                       </div>
                   </div>
                 
                 <div class="form-group">
                   <label for="apellido" class="col-lg-2 control-label">Apellido</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="apellido" name="apellido">
+                        <input type="text" class="form-control" id="apellido" name="apellido" required>
                       </div>
                   </div>
 
                   <div class="form-group">
                   <label for="fecha_nac" class="col-lg-2 control-label">Fecha de Nacimiento</label>
                     <div class="col-lg-10">
-                        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac">
+                        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac" required>
                       </div>
                   </div>
 
@@ -60,13 +60,13 @@
                     <div class="col-lg-10">
                       <div class="radio">
                         <label>
-                          <input type="radio" name="activo" id="optionsRadios1" value="1">
+                          <input type="radio" name="activo" id="optionsRadios1" value="1" required>
                           Activo
                         </label>
                       </div>
                       <div class="radio">
                         <label>
-                          <input type="radio" name="activo" id="optionsRadios2" value="0">
+                          <input type="radio" name="activo" id="optionsRadios2" value="0" required>
                           Inactivo
                         </label>
                       </div>

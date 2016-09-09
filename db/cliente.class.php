@@ -91,7 +91,7 @@ class Cliente {
 
 		try {
 
-			$sql = "INSERT INTO clientes VALUES (null, :nombre, :apellido, :fecha_nac, :activo)";
+			$sql = "INSERT INTO clientes VALUES (null, :apellido, :nombre, :fecha_nac, :activo)";
 			$stmt = $conn->prepare($sql);
 
 			$stmt->bindParam('nombre', $user['nombre'], PDO::PARAM_STR);
