@@ -81,8 +81,11 @@
 
 				    <div class="form-group">
 				      <div class="col-lg-10 col-lg-offset-2">
-				        <button type="cancel" class="btn btn-danger" href="index.php">Cancelar</button>
-				        <button type="submit" class="btn btn-success">Guardar</button>
+				        <a class="btn btn-danger" href="index.php">
+                           <span class="glyphicon glyphicon-chevron-left"></span> Cancelar
+                       </a>
+
+				        <button type="submit" class="btn btn-success">Guardar <span class="glyphicon glyphicon-save-file"></span></button>
 				      </div>
 				    </div>
 

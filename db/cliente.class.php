@@ -78,4 +78,47 @@ class Cliente {
 		}
 	}
 
+	function nuevo_cliente($user)
+	{
+		$conn = new conexion();
+
+		try {
+
+			$sql = "INSERT INTO clientes VALUES (null, :nombre, :apellido, :fecha_nac, :activo)";
+			$stmt = $conn->prepare($sql);
+
+			$stmt->bindParam('nombre', $user['nombre'], PDO::PARAM_STR);
+			$stmt->bindParam('apellido', $user['apellido'], PDO::PARAM_STR);
+			$stmt->bindParam('fecha_nac', $user['fecha_nac'], PDO::PARAM_STR);
+			$stmt->bindParam('activo', $user['activo'], PDO::PARAM_STR);
+			$stmt->execute();
+
+			/*Devolver mensaje de confirmacion*/
+			
+		} catch (PDOException $e) {
+			throw new Exception($e->getMessage());
+		}
+
+	}
+
+	function borrar_cliente($user)
+	{
+		$conn = new conexion();
+
+		try {
+
+			$sql = "DELETE FROM clientes WHERE id = :id";
+			$stmt = $conn->prepare($sql);
+
+			$stmt->bindParam('id', $user['id'], PDO::PARAM_STR);
+			$stmt->execute();
+
+			/*Devolver mensaje de confirmacion*/
+			
+		} catch (PDOException $e) {
+			throw new Exception($e->getMessage());
+		}
+
+	}
+
 }

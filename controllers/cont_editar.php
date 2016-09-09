@@ -18,16 +18,9 @@
 
 			$respuesta = $c->modificar_cliente($usuario);
 
-			if($respuesta == "oks")
-			{
-				header("Location: ../index.php");
-				die();
-			}
-			else
-			{
-				header("Location: ../editar.php");	
-				die();
-			}
+			header("Location: ../index.php");
+			die();
+			
 			
 		} catch (Exception $e) {
 			throw new Exception($e->getMessage());

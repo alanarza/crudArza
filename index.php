@@ -20,6 +20,74 @@
     <![endif]-->
   </head>
   <body>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Agregar Cliente</h4>
+          </div>
+          <div class="modal-body">
+            
+
+            <form class="form-horizontal" role="form" action="controllers/cont_index.php" method="POST">
+              <fieldset>
+                  
+                  <div class="form-group">
+                  <label for="nombre" class="col-lg-2 control-label">Nombre</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="nombre" name="nombre">
+                      </div>
+                  </div>
+                
+                <div class="form-group">
+                  <label for="apellido" class="col-lg-2 control-label">Apellido</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="apellido" name="apellido">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label for="fecha_nac" class="col-lg-2 control-label">Fecha de Nacimiento</label>
+                    <div class="col-lg-10">
+                        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac">
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-2 control-label">Activo</label>
+                    <div class="col-lg-10">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="activo" id="optionsRadios1" value="1">
+                          Activo
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="activo" id="optionsRadios2" value="0">
+                          Inactivo
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <input id="action" type="hidden" name="action" value="nuevo"/>
+
+              </fieldset>
+            
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
     
     <div class="col-md-2"></div>
 
@@ -63,7 +131,7 @@
                 <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
               <?php endif;?>
 
-              <td><a href="#" class="btn btn-primary btn-sm">Editar</a><a href="#" class="btn btn-danger btn-sm">Borrar</a></td>
+              <td><a href="editar.php?id=<?php echo $cliente['id'];?>" class="btn btn-primary btn-sm">Editar <span class="glyphicon glyphicon-pencil"></span></a><a href="controllers/cont_index.php?id=<?php echo $cliente['id'];?>&action=borrar" class="btn btn-danger btn-sm">Borrar <span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
 
           <?php endforeach; ?>
@@ -73,7 +141,7 @@
       </tbody>
       </table>
 
-      <a href="#" class="btn btn-success btn-sm pull-right">Crear Nuevo</a>
+      <a  class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#myModal">Crear Nuevo <span class="glyphicon glyphicon-plus"></span></a>
 
       </div>
     </div>
