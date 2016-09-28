@@ -3,6 +3,39 @@
 	session_start();
 
 	require_once __DIR__."/../db/cliente.class.php";
+	
+
+	if(isset($_POST['action']) && $_POST['action'] == 'login')
+	{
+		try {
+
+			$c = new Cliente();
+
+			$respuesta = $c->login($_POST['user'], $_POST['pass']);
+
+			header("Location: ../index.php");
+			die();
+			
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
+
+	if(isset($_GET['action']) && $_GET['action'] == 'logout')
+	{
+		try {
+
+			$_SESSION = array();
+				
+			session_destroy();
+
+			header("Location: ../index.php");
+			die();
+
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
 
 	if(isset($_POST['action']) && $_POST['action'] == 'nuevo')
 	{
@@ -10,9 +43,8 @@
 
 			$c = new Cliente();
 
-			$usuario['id'] = $_POST['id'];
-			$usuario['apellido'] = $_POST['apellido'];
 			$usuario['nombre'] = $_POST['nombre'];
+			$usuario['apellido'] = $_POST['apellido'];
 			$usuario['fecha_nac'] = $_POST['fecha_nac'];
 			$usuario['activo'] = $_POST['activo'];
 

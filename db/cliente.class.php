@@ -128,4 +128,38 @@ class Cliente {
 
 	}
 
+	function login($user, $pass)
+	{
+		$conn = new conexion();
+
+		try {
+
+			$sql = "SELECT usuarios.nombre, roles.rol , GROUP_CONCAT(permisos.permiso SEPARATOR ' ') AS permisos FROM usuarios 
+					LEFT JOIN roles ON usuarios.rol = roles.id 
+					LEFT JOIN roles_permisos ON roles_permisos.id_roles = roles.id 
+					LEFT JOIN permisos ON roles_permisos.id_permisos = permisos.id 
+					WHERE usuarios.username = :user AND usuarios.password = :pass";
+
+			$stmt = $conn->prepare($sql);
+
+			$stmt->bindParam('user', $user, PDO::PARAM_STR);
+			$stmt->bindParam('pass', $pass, PDO::PARAM_STR);
+			$stmt->execute();
+
+			if($stmt->rowCount() == 1)
+			{
+
+				$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+				$_SESSION['nombre'] = $usuario['nombre'];
+				$_SESSION['rol'] = $usuario['rol'];
+				$_SESSION['permisos'] = $usuario['permisos'];
+
+				return 'ok';
+			}
+			
+		} catch (PDOException $e) {
+			throw new Exception($e->getMessage());
+		}
+	}
+
 }
